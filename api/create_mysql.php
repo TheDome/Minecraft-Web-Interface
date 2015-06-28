@@ -35,14 +35,14 @@
     echo 'Inserting User and getting up ... <br>';
     echo "\n";
 
-    try {
+//    try {
         print_r ($api->sign_up ("Hallo", hash ("sha256", "Hallo"), hash ("sha256", "Hallo")));
-        $api->query ('INSERT INTO users(username, password) VALUES (Hollo, ' . hash ("sha256", "Hallo") . ')');
-    }catch(mysqli_sql_exception $e){
+//        $api->query ('INSERT INTO users(username, password) VALUES (Hollo, ' . hash ("sha256", "Hallo") . ')');
+/*    }catch(Exception $e){
         echo $e->getTraceAsString();
         echo "\n at :".$e->getLine();
     }
-
+*/
     echo "\n";
     echo 'User Hallo with Password Hallo inserted ...<br>';
 
