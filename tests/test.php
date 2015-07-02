@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 
 //echo 'Init <br>';
 require_once '../api/api.php';
-$api = new api_main();
+$api = new api();
 //echo 'Init finished! <br>';
 
 

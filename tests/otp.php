@@ -17,7 +17,7 @@
 
 
 /*
-    $api = new api_main();
+    $api = new api();
     $logon_ergebnis = $api->get_sql()->query("select count(*) from users where username = 'Hallo'");
 
     $userObj = mysql_fetch_object($logon_ergebnis);
@@ -53,7 +53,7 @@
     </head>
     <body>
 
-    <script src="api/jquery-2.1.4.js"></script>
+    <script src="/api/jquery-2.1.4.js"></script>
     <script type="text/javascript">
 
         function getOTP(){
@@ -62,7 +62,7 @@
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
                 }
-            }
+            };
 
             var period = 30;
             xmlhttp.open("GET", "otpgen.php?sec=<?php echo $secret; ?>&algo=<?php echo $algo; ?>&per="+period);

@@ -4,7 +4,7 @@
         require_once (".".DIRECTORY_SEPARATOR."settings.php");
         require_once ("." . DIRECTORY_SEPARATOR . "api.php");
 
-        $api = new api_main();
+        $api = new api();
     } catch (Exception $e){
         echo $e->getTrace();
     }
@@ -27,23 +27,23 @@
     echo "Database created <br>";
 
     echo "Filling with Tables <br>";
-    $length = strlen(UUID_PREFIX) + 23;
     $mysql->select_db($table);
-    $mysql->query("create table if not exists users(id int NOT NULL AUTO_INCREMENT, username VARCHAR(16) NOT NULL, password VARCHAR(64) NOT NULL, token VARCHAR($length), time datetime, PRIMARY KEY(id))");
+$mysql->query("CREATE TABLE IF NOT EXISTS users(id INT NOT NULL AUTO_INCREMENT, username VARCHAR(16) NOT NULL, password VARCHAR(64) NOT NULL, token VARCHAR(23), time DATETIME, PRIMARY KEY(id))");
     echo "Finished ... <br>";
 
     echo 'Inserting User and getting up ... <br>';
     echo "\n";
 
-//    try {
+try {
         print_r ($api->sign_up ("Hallo", hash ("sha256", "Hallo"), hash ("sha256", "Hallo")));
-//        $api->query ('INSERT INTO users(username, password) VALUES (Hollo, ' . hash ("sha256", "Hallo") . ')');
-/*    }catch(Exception $e){
+    $pass = hash("sha256", "Hallo");
+    $api->query("INSERT INTO users(username, password) VALUES ('Hallo', $pass");
+} catch (Exception $e) {
         echo $e->getTraceAsString();
         echo "\n at :".$e->getLine();
     }
-*/
-    echo "\n";
+
+echo "\n";
     echo 'User Hallo with Password Hallo inserted ...<br>';
 
     echo 'Created the SQL and made Tables ...<br> ';

@@ -5,28 +5,34 @@
 require_once 'settings.php';
 
 /**
- * Class api_main
+ * Class api
  */
-class api_main {
+class api
+{
 
     /**
-     * @return $this
+     * The function to send querys to the SQL Server.
+     * @param $query string The Query, sending to the SQL Server
+     *
+     * @return bool|mysqli_result The result of the query
      */
-    public function getAPI(){
-        return $this;
+    public static function query($query)
+    {
+        return self::get_sql()->query($query);
     }
 
     /**
      * The Main fuction to get The MYSQL server
      * @return mysqli
      */
-    public static function get_sql(){
+    public static function get_sql()
+    {
 
         $mysql = new \mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, DB_PORT);
 
-        $mysql->query("alter table users change token token varchar(" . 23 + strlen(UUID_PREFIX) . ")");
+        // $mysql->query("alter table users change token token varchar(" . 23 + strlen(UUID_PREFIX) . ")");
 
-        if($mysql->connect_error){
+        if ($mysql->connect_error) {
             die($mysql->connect_error);
         }
 
@@ -35,6 +41,13 @@ class api_main {
 
     }
 
+    /**
+     * @return $this
+     */
+    public function getAPI()
+    {
+        return $this;
+    }
 
     /**The Method to sign a User Up returns an array with stat => suc else stat => fail and the reason => with the reason.
      * The <code>Reason</code> can be parsed.
@@ -52,29 +65,18 @@ class api_main {
             return array("stat" => "fail", "reason" => "The two passwords aren't same");
         }
 
-        $sql = $this->get_sql ();
-        mysqli_real_escape_string ($sql, $username);
-        $result = $this->get_sql ()->query ("select id from users where username = '$username'")->num_rows;
+        $sql = $this->get_sql();
+        mysqli_real_escape_string($sql, $username);
+        $result = $this->get_sql()->query("select id from users where username = '$username'")->num_rows;
 
         if ($result) {
             return array("stat" => "fail", "reason" => "Username already exists");
         } else {
-            $sql->query ("INSERT INTO users(username, password) VALUES ('" . $username . "','" . $password . "')");
+            $sql->query("INSERT INTO users(username, password) VALUES ('" . $username . "','" . $password . "')");
 
             return array("stat" => "suc");
         }
 
-    }
-
-    /**
-     * The function to send querys to the SQL Server.
-     * @param $query string The Query, sending to the SQL Server
-     *
-     * @return bool|mysqli_result The result of the query
-     */
-    public static function query($query)
-    {
-        return self::get_sql()->query ($query);
     }
 }
 
@@ -84,26 +86,20 @@ class api_main {
 class login_api{
 
     /**
-     * @return api_main
-     */
-    private function getAPI(){
-        return new api_main();
-    }
-
-    /**
      * The function to log in to the System
      * @param string $username The is the Username of the person
      * @param string $password THe is the Password of the person
      * @return array An array with the sucess in the <code>stat => suc</code> method and the <code>uuid</code> and the <code>time</code> from the log in if it is sucsess, else <code>stat => nosuc</code>
      */
-    public function login($username, $password){
+    public function login($username, $password)
+    {
 
 
         $result = $this->getAPI()->get_sql()->query("select count(*) from users where username = '$username' and password = '$password'")->fetch_assoc();
 
-        $uuid = uniqid(UUID_PREFIX , 23);
+        $uuid = uniqid(23);
 
-        if($result){
+        if ($result) {
 
 
             $this->getAPI()->get_sql()->query("update users set token = '$uuid', time = CURRENT_TIMESTAMP where username = '$username' ");
@@ -114,6 +110,14 @@ class login_api{
         }
 
 
+    }
+
+    /**
+     * @return api
+     */
+    private function getAPI()
+    {
+        return new api();
     }
 
     /** Log the User out
@@ -132,20 +136,14 @@ class login_api{
 class session_api {
 
     /**
-     * @return api_main The main API
-     */
-    private function getAPI(){
-        return new api_main();
-    }
-
-    /**
      *  Checks if the User is logged in.
      * @param $username string The Username
      * @param $token string The token
      * @return bool
      */
-    public function check_login($username, $token){
-        $date = new DateTime();
+    public function check_login($username, $token)
+    {
+        $date = new DateTime(); //TODO finish
         return $this->compare_unique_id($username, $token);
     }
 
@@ -155,15 +153,24 @@ class session_api {
      * @param $uuid string The token to Compare
      * @return bool
      */
-    public function compare_unique_id($username, $uuid){
+    public function compare_unique_id($username, $uuid)
+    {
         $uuid_server = $this->getAPI()->get_sql()->query("select token from users where username = '$username'");
 
         return $uuid_server == $uuid;
     }
 
     /**
+     * @return api The main API
+     */
+    private function getAPI()
+    {
+        return new api();
+    }
+
+    /**
      * This function returns the UUID of a user
-     * @param $username sting The Username
+     * @param $username string The Username
      * @return bool|mysqli_result
      */
     public function get_unique_id($username){

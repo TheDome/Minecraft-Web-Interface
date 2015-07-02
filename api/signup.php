@@ -1,14 +1,14 @@
 <?php
 
 require_once 'api.php';
-$api = new api_main();
+$api = new api();
 
 $user = $_POST["username"];
 $pass = hash("sha256", $_POST["password"]);
+$pass2 = hash("sha256", $_POST["password2"]);
 
 
-
-$api->sign_up($user, $pass);
+$api->sign_up($user, $pass, $pass2);
 ?>
 
 <!DOCTYPE html>
