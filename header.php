@@ -11,7 +11,7 @@
             <a class="navbar-brand" href="/">BanManagement</a>
         </div>
         <?php session_start(); if (!isset($_SESSION["username"])) { ?>
-            <form method="post" action="login.php" class="navbar-form navbar-right">
+            <form method="post" action="api/login.php" class="navbar-form navbar-right">
                 <div class="form-group">
                     <input type="text" name="username" placeholder="Username" class="form-control">
                     <input type="password" name="password" placeholder="Password" class="form-control">
