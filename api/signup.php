@@ -1,4 +1,6 @@
 <?php
+@E_DEPRECATED;
+//TODO: Rework
 
 require_once 'api.php';
 $api = new api();
@@ -18,9 +20,13 @@ $api->sign_up($user, $pass, $pass2);
     <title>Signup - Reloading</title>
 </head>
 <body>
-<script src="../post.js"></script>
+<!-- TODO: Use ajax -->
+<script src="/api/jquery-2.1.4.js"></script>
 <script type="text/javascript">
-    submit("login.php", {username: <?php echo $user;?>, password: <?php echo $_POST["password"];?>})
-</script>
+    /*   $.ajax({
+     url:"login.php",
+     method: "post",
+     }"login.php", {username: <?php echo $user;?>, password: <?php echo $_POST["password"];?>})
+     */</script>
 </body>
 </html>

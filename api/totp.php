@@ -47,6 +47,7 @@
 
         /**
          * Generates a 16 digit secret key in base32 format
+         * @param int lenght of the key
          * @return string
          **/
         public static function generate_secret_key($length = 16) {
@@ -105,6 +106,7 @@
          * @param binary $key - Secret key in binary form.
          * @param integer $counter - Timestamp as returned by get_timestamp.
          * @return string
+         * @throws Exception if the secret key is too short
          **/
         public static function oath_hotp($key, $counter, $algo = "sha512")
         {

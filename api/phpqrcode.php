@@ -1058,7 +1058,6 @@
         
             if(!QRinput::check($mode, $size, $setData)) {
                 throw new Exception('Error m:'.$mode.',s:'.$size.',d:'.join(',',$setData));
-                return null;
             }
             
             $this->mode = $mode;
@@ -1296,7 +1295,6 @@
         {
             if ($version < 0 || $version > QRSPEC_VERSION_MAX || $level > QR_ECLEVEL_H) {
                 throw new Exception('Invalid version no');
-                return NULL;
             }
             
             $this->version = $version;
