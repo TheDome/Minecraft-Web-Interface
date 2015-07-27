@@ -89,13 +89,13 @@ class login_api{
      * The function to log in to the System
      * @param string $username The is the Username of the person
      * @param string $password THe is the Password of the person
-     * @return array An array with the sucess in the <code>stat => suc</code> method and the <code>uuid</code> and the <code>time</code> from the log in if it is sucsess, else <code>stat => nosuc</code>
+     * @return array An array with the sucess in the <code>stat => suc</code> method and the <code>uuid => uuid</code> and the <code>time => time</code> from the log in if it is sucsess, else <code>stat => nosuc</code>
      */
     public function login($username, $password)
     {
 
 
-        $result = $this->getAPI()->get_sql()->query("select count(*) from users where username = '$username' and password = '$password'")->fetch_assoc();
+        $result = $this->getAPI()->get_sql()->query("select count(*) from users where username = '$username' and password = '$password'");
 
         $uuid = uniqid(23);
 
@@ -141,6 +141,7 @@ class session_api {
      * @param $token string The token
      * @return bool
      */
+    //TODO: Finish!
     public function check_login($username, $token)
     {
         $date = new DateTime(); //TODO finish
