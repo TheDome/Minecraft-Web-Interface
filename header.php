@@ -23,5 +23,5 @@
                 <p class="navbar-text">Welcome, <?php echo $_SESSION["username"]; ?> do you want to <a href="api/" </p>
             </div>
         <?php } ?>
-    </div><!-- /.container-fluid -->
+    </div>
 </nav>
