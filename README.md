@@ -6,4 +6,4 @@ At the end it should be used to modify the Minecraft Server with McMyAdmin, 'cro
 
 My skill level in PHP is not the best, so I would appreciate it, if you report me, if the is a mistake in my Code. For me it is also great, if you give me suggestions, how to make the code better.
 
-For execution, I user Vagrant. The <a href="www.vagrantup.com">Vagrant</a> enviroment is in the Repositry. As box, you need ubuntu/trusty64. Then only run "vagrant up"
+For execution, I user Vagrant. The <a href="https://www.vagrantup.com">Vagrant</a> enviroment is in the Repositry. As box, you need ubuntu/trusty64. Then only run "vagrant up"
