@@ -16,7 +16,7 @@ if (!isset ($_SESSION["username"])) { ?>
         <button type="submit">Log In</button>
     </form>
 
-    <script src="api/jquery-2.1.4.js"></script>
+    <script src="api/libs/jquery-2.1.4.js"></script>
     <script type="text/javascript">
 
 

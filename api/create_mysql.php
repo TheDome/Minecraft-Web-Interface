@@ -1,7 +1,7 @@
 <?php
 
     try {
-        require_once (".".DIRECTORY_SEPARATOR."settings.php");
+        require_once("." . DIRECTORY_SEPARATOR . "config" . DIRECTORY_SEPARATOR . "settings.php");
         require_once ("." . DIRECTORY_SEPARATOR . "api.php");
 
         $api = new api();

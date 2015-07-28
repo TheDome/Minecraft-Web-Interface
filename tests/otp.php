@@ -53,7 +53,7 @@
     </head>
     <body>
 
-    <script src="/api/jquery-2.1.4.js"></script>
+    <script src="/api/libs/jquery-2.1.4.js"></script>
     <script type="text/javascript">
 
         function getOTP(){

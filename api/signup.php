@@ -21,7 +21,7 @@ $api->sign_up($user, $pass, $pass2);
 </head>
 <body>
 <!-- TODO: Use ajax -->
-<script src="/api/jquery-2.1.4.js"></script>
+<script src="/api/libs/jquery-2.1.4.js"></script>
 <script type="text/javascript">
     /*   $.ajax({
      url:"login.php",
