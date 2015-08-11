@@ -4,9 +4,7 @@
 Vagrant.configure(2) do |config|
     config.vm.box = "ubuntu/trusty64"
 
-    # Mentioning the SSH Username/Password:
-    config.ssh.username = "vagrant"
-    config.ssh.password = "vagrant"
+
     # Begin Configuring
     config.vm.define "lamp" do|lamp|
 
