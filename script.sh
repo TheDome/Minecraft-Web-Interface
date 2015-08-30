@@ -2,7 +2,7 @@
 
 # Updating repository
  
-sudo apt-get -y update
+#sudo apt-get -y update
  
 # Installing Apache
  
