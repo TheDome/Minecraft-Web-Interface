@@ -1,5 +1,5 @@
 # Minecraft-Web-Interface
-#Attention! This repository is far from completetion! 
+# Attention! This repository is far from completetion! 
 
 A Interface to manage a Minecraft server with McMyAdmin
 
